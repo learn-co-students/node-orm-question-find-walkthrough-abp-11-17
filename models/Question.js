@@ -30,19 +30,17 @@ class Question{
   }
 
   static Find(id){
-		// const sql = "select * FROM questions WHERE id = ?"
-		// const self = this //need this?
+		const sql = "select * FROM questions WHERE id = ?"
+		const self = this //need this?
     //
 		return new Promise(function(resolve){
-		// 	db.get(sql, [id], function(err, results){ //err, results? yes. //want tp ise db.get
-		// 		const question = new Question(results) //add constuctors here
-		// 		question.id = results.id // not self.id = this.LastID. this is for previous ex.
-				resolve(/*question*/)
-		// 	})
+		    db.get(sql, [id], function(err, results){ //err, results? yes. //want tp ise db.get
+				const question = new Question(results.content) //only want .content !!!
+				question.id = results.id // not self.id = this.LastID. this is for previous ex.
+				resolve(question)
+		 	})
 		})
 	}
-
-
 }
 
 module.exports = Question;
