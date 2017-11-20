@@ -7,10 +7,10 @@ class Question{
         id INTEGER PRIMARY KEY,
         content TEXT
       )`
-      
+
       db.run(sql, function(){
         resolve("questions table created")
-      })      
+      })
     })
   }
 
@@ -19,15 +19,29 @@ class Question{
   }
 
   insert(){
-    const self = this 
+    const self = this
     const sql = `INSERT INTO questions (content) VALUES (?)`
     return new Promise(function(resolve){
       db.run(sql, [self.content], function(err, result){
         self.id = this.lastID
-        resolve(self)      
+        resolve(self)
       })
     })
   }
+
+  static Find(id){
+		// const sql = "select * FROM questions WHERE id = ?"
+		// const self = this //need this?
+    //
+		return new Promise(function(resolve){
+		// 	db.get(sql, [id], function(err, results){ //err, results? yes. //want tp ise db.get
+		// 		const question = new Question(results) //add constuctors here
+		// 		question.id = results.id // not self.id = this.LastID. this is for previous ex.
+				resolve(/*question*/)
+		// 	})
+		})
+	}
+
 
 }
 
