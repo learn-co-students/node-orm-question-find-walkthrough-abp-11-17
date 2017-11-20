@@ -35,7 +35,7 @@ class Question{
     //
 		return new Promise(function(resolve){
 		    db.get(sql, [id], function(err, results){ //err, results? yes. //want tp ise db.get
-				const question = new Question(results.content) //only want .content !!!
+				const question = new Question(results.content) //only want .content not all of results!!!
 				question.id = results.id // not self.id = this.LastID. this is for previous ex.
 				resolve(question)
 		 	})
